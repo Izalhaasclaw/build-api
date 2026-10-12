@@ -1,7 +1,19 @@
-export class CreateBookDto {
-    readonly title : string;
-    readonly author : string;
-    readonly isbn : string;
-    readonly publishedYear : number;
-    readonly isAvailable : boolean;
+import { IsInt, IsNotEmpty, IsString } from "class-validator";
+
+export class CreateBookDto{
+    @IsNotEmpty({message:"Title tidak boleh kosong"})
+    @IsString({message:"Title harus berupa string"})
+    readonly title: string;
+
+    @IsNotEmpty({message:"Author tidak boleh kosong"})
+    @IsString({message:"Author harus berupa string"})
+    readonly author: string;        
+
+    @IsNotEmpty({message:"ISBN harus diisi"})
+    @IsString({message:"ISBN harus berupa string "})
+    readonly isbn: string;  
+
+    @IsInt({message:"Published year harus berupa angka"})
+    readonly publishedYear: number;  
+
 }
